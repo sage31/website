@@ -1,0 +1,51 @@
+<html>
+<head>
+<script language = "JavaScript">
+var myList = [ "Anne", "Bob", "Cathy", "Doug" ];
+var number = 11;
+function tester()
+{	
+	number = number - 1;
+	
+	if(number == 0)
+	{
+		alert("Blastoff!!");
+		number = 11;
+	}
+	else
+	{
+		alert(number);
+	}
+}
+
+function names()
+{
+	for(i = 0; i<myList.length; i++)
+	{
+	alert(myList[i]);
+	}
+}	
+</script>
+
+</head>
+<body background="images/watercolor.png">
+<font face = "Verdana">
+<center> 
+<h1> JavaScript Tester </h1>
+</font>
+<img src= "images/javascript.png" width="300">
+
+<br/>
+<br/>
+
+<input type="button" value="Click Me to Blastoff" onClick="tester()" style="background-color:green;color:white;font-family:Verdana;">
+<input type="button" value="Click Me for Names" onClick="names()" style="background-color:blue;color:white;font-family:Verdana;">
+<br/>
+<br/>
+<font face = "Verdana" size = "4.5">
+<a href="index.html" style="color:black"> Click here to go back to my main page. </a>
+</font>
+</center>
+</body>
+</html>
+
