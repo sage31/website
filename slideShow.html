@@ -1,0 +1,35 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var number = 0;
+var picList = [ "images/slide0.png", "images/slide1.png", "images/slide2.png", "images/slide3.png", "images/slide4.png"];
+function startShow()
+{
+	document.getElementById("picFrame").src = picList[number];
+	number = number + 1;
+	if (number > 4)
+	{
+		number = 0;
+	}
+}
+
+
+</script>
+
+</head>
+<body>
+<center> 
+<h1> JavaScript Slideshow </h1>
+
+<img id="picFrame" src="images/slide0.png"/>
+<br/>
+<br/>
+
+<input type="button" value="Click Me" onClick="startShow()">
+
+</center>
+</body>
+</html>
+
+
