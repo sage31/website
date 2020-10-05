@@ -4,22 +4,35 @@
 <script language = "JavaScript">
 
 var number = 0;
-var picList = [ "images/slide0.png", "images/slide1.png", "images/slide2.png", "images/slide3.png", "images/slide4.png"];
+var audionumber = 0;
+var picList = [ "images/slide0.png", "images/slide1.png", "images/slide2.png", "images/slide3.png", "images/slide4.png", "images/slide5.jpg"];
 var audioList = [ "sounds/welcome.mp3", "sounds/effect1.mp3", "sounds/effect2.mp3", "sounds/effect3.mp3", "sounds/effect4.mp3"];
 function startShow()
 {
+	
 	var pic = document.getElementById("picFrame");
 	var sound = document.getElementById("myAudio");
 	
 	pic.src = picList[number];
-	sound.src = audioList[number];
-	sound.play();
+	sound.src = audioList[audionumber];
+	if (number != 0)
+	{
+		sound.play();
+		audionumber = audionumber + 1;
+	}
 	
 	number = number + 1;
-	if (number > 4)
+	
+	if (number > 5)
 	{
 		number = 0;
 	}
+	
+	if (audionumber > 4)
+	{
+		audionumber = 0;
+	}
+	
 }
 </script>
 </head>
