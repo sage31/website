@@ -1,0 +1,26 @@
+<html>
+<head>
+<script languague = "JavaScript">
+var rand = 0;
+
+function random()
+{
+	rand = Math.random(); // random decimal between 0 and 1
+	
+	rand = rand*20-10; // between -10 and 10
+	
+	rand = Math.floor(rand) // returns neartest integer less than parameter
+	
+	
+	alert(rand);
+}
+
+</script>
+</head>
+<body background="floor-tile.png">
+<center>
+<h1>Random Tester</h1>
+<input type="button" value="Click here" onClick="random()"/>
+</center>
+</body>
+</html>

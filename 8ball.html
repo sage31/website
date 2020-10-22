@@ -1,0 +1,78 @@
+<html>
+<head>
+<script languague = "JavaScript">
+var rand = 0;
+
+var answers = ["fortune 1!", "fortune 2!", "fortune 4!", "fortune 5!", "fortune 6!", "fortune 7!", "fortune 8!", "fortune 9!", "fortune 10!",]
+
+function random()
+{
+	rand = Math.random(); // random decimal between 0 and 1
+	
+	rand = rand * 9 + 1; // 1-10
+	
+	rand = Math.floor(rand) // returns neartest integer less than parameter
+	
+	if (rand == 1)
+	{
+	alert(answers[0]);
+	}
+	if (rand == 2)
+	{
+	alert(answers[1]);
+	}
+	if (rand == 3)
+	{
+	alert(answers[2]);
+	}
+	if (rand == 4)
+	{
+	alert(answers[3]);
+	}
+	if (rand == 5)
+	{
+	alert(answers[4]);
+	}
+	if (rand == 6)
+	{
+	alert(answers[5]);
+	}
+	if (rand == 7)
+	{
+	alert(answers[6]);
+	}
+	if (rand == 8)
+	{
+	alert(answers[7]);
+	}
+	if (rand == 9)
+	{
+	alert(answers[8]);
+	}
+	if (rand == 10)
+	{
+	alert(answers[9]);
+	}
+	
+}
+
+</script>
+</head>
+<body background="images/floor-tile.png">
+<center>
+<font face="Tahoma">
+<h1>What's your fortune? Use the Magic 8 Ball to find out. </h1>
+<img src="images/8ball.jpg" width="600" border="3">
+<p align="justify" style="width:800"> 
+
+In order for the 8 ball to work correctly, it needs some information. In the first text box, please enter your name in. In the second text box, please enter your age.
+Then, you may use the "Click me!" button to find your fortune. 
+
+</p>
+<input type = "text" id= "question" ="80"/>
+<input type="button" value="Click me!" onClick="random()"/>
+<input type = "text" id= "answer" ="80"/>
+
+</center>
+</body>
+</html>
