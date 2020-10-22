@@ -9,51 +9,12 @@ function random()
 {
 	rand = Math.random(); // random decimal between 0 and 1
 	
-	rand = rand * 9 + 1; // 1-10
+	rand = rand * 9; // 0-9
 	
 	rand = Math.floor(rand) // returns neartest integer less than parameter
 	
-	if (rand == 1)
-	{
-	alert(answers[0]);
-	}
-	if (rand == 2)
-	{
-	alert(answers[1]);
-	}
-	if (rand == 3)
-	{
-	alert(answers[2]);
-	}
-	if (rand == 4)
-	{
-	alert(answers[3]);
-	}
-	if (rand == 5)
-	{
-	alert(answers[4]);
-	}
-	if (rand == 6)
-	{
-	alert(answers[5]);
-	}
-	if (rand == 7)
-	{
-	alert(answers[6]);
-	}
-	if (rand == 8)
-	{
-	alert(answers[7]);
-	}
-	if (rand == 9)
-	{
-	alert(answers[8]);
-	}
-	if (rand == 10)
-	{
-	alert(answers[9]);
-	}
-	// this is very ineffecient, I KNOW
+	alert(answers[rand]);
+
 }
 
 </script>
@@ -75,9 +36,6 @@ Then, you may use the "Click me!" button to find your fortune.
 
 </br>
 </br>
-</br>
-</br>
-
 
 <a href="index.html"> Click here to return home. </a>
 
