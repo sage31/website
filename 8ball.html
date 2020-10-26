@@ -1,20 +1,34 @@
 <html>
 <head>
-<script languague = "JavaScript">
+<script language = "JavaScript">
 var rand = 0;
 
-var answers = ["fortune 1!", "fortune 2!", "fortune 4!", "fortune 5!", "fortune 6!", "fortune 7!", "fortune 8!", "fortune 9!", "fortune 10!",]
+var answers = ["Yes!", "No!", "Probably!", "Probably not!", "Maybe", "If it is raining, yes.", "Without a doubt.", "Can't predict now.", "Please ask again.", "Very doubtful."]
 
 function random()
 {
+    
 	rand = Math.random(); // random decimal between 0 and 1
 	
 	rand = rand * 9; // 0-9
 	
 	rand = Math.floor(rand) // returns neartest integer less than parameter
 	
-	alert(answers[rand]);
-
+    
+    var dq = document.getElementById("question");
+    var da = document.getElementById("answer");
+  
+    
+    if(dq.value.length > 0)
+    {
+        da.value = (answers[rand]);
+    }
+    
+    else
+    {
+        alert("Please type a question first.");
+    }
+    
 }
 
 </script>
@@ -26,8 +40,7 @@ function random()
 <img src="images/8ball.jpg" width="600" border="3">
 <p align="justify" style="width:800"> 
 
-In order for the 8 ball to work correctly, it needs some information. In the first text box, please enter your name in. In the second text box, please enter your age.
-Then, you may use the "Click me!" button to find your fortune. 
+In order for the 8 ball to work correctly, you must enter a question in the first box. Then, you may use the "Click me!" button to find the proper answer to your question. 
 
 </p>
 <input type = "text" id= "question" ="80"/>
