@@ -10,27 +10,39 @@ function random()
     
 	rand = Math.random(); // random decimal between 0 and 1
 	
-	rand = rand * 9; // 0-9
+	rand = rand * answers.length; // 0-9
 	
-	rand = Math.floor(rand) // returns neartest integer less than parameter
+	rand = Math.floor(rand); // returns neartest integer less than parameter
 	
     
     var dq = document.getElementById("question");
     var da = document.getElementById("answer");
   
-    
-    if(dq.value.length > 0)
-    {
-        da.value = (answers[rand]);
-    }
-    
-    else
+  
+    if(dq.value.length == 0)
     {
         alert("Please type a question first.");
     }
     
+     else
+    {
+        da.value = (answers[rand]);
+       
+        if (rand == 6)
+        {
+            document.getElementById("audio1").play(); 
+        }
+        
+    }
+    
+    
 }
 
+function reset()
+{
+    document.getElementById("question").value = "";
+    document.getElementById("answer").value = ""
+}
 </script>
 </head>
 <body background="images/floor-tile.png">
@@ -43,9 +55,10 @@ function random()
 In order for the 8 ball to work correctly, you must enter a question in the first box. Then, you may use the "Click me!" button to find the proper answer to your question. 
 
 </p>
-<input type = "text" id= "question" ="80"/>
+<input type = "text" id= "question" ="80" onfocusin="reset()"/>
 <input type="button" value="Click me!" onClick="random()"/>
-<input type = "text" id= "answer" ="80"/>
+<input type = "text" id= "answer" ="80" readonly/>
+<audio id="audio1" src="sounds/audio1.mp3"> </audio>
 
 </br>
 </br>
