@@ -11,13 +11,39 @@ function addOne()
 	
 	if(number == 16)
 	{number = 0;}
+		
+	flipLEDs();
+	
+	if (autoClicked == true )
+	{
+		var timer = setTimeout ("addOne()", 500)
+	}
 	
 	document.getElementById("count").value = number
-	onesPlace();
-	twosPlace();
-	foursPlace();
-	eightsPlace();
+}
+
+function flipLEDs()
+{
+onesPlace();
+twosPlace();
+foursPlace();
+eightsPlace();
+}
+
+function auto()
+{
+	if(autoClicked == false)
+	{ 
+	autoClicked = true;
+	document.getElementById("runStop").value = "Pause";
+	addOne();
+	}
 	
+	else
+	{
+	autoClicked = false;
+	document.getElementById("runStop").value = "Run";
+	}
 }
 
 function onesPlace()
