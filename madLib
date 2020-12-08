@@ -1,0 +1,80 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["Please enter a verb used to describe feelings towards something, ending in ed, e.g. hated","Please enter any holiday","Please enter an arbitrary question, use a question mark ","Please enter a plural noun, e.g. horses","Please enter a number between 1 and 5","Please enter an activity that two people do together ending in ing","Please enter a reason for breaking up with someone, e.g. it simply didn't work out","Please enter a number between 1 and 10", "Please enter an emotion", "Please enter the opposite of the emotion you just inputted"];
+var userAnswers = new Array(partsOfSpeech.length);
+var story = ["There once was a boy who "," partying. Any type of partying. One year, there was a "," party, and he decided to go. He was scared because he knew his crush would be there. However, he decided it was finally time to ask out his crush. He went up to her and asked '","' Turns out they both shared the same enjoyment for ",". And the rest was history. They got married "," years later. As life went on, they realized that their connection was weakening, and so they decided to try "," together, as a way to get closer again. Unfortunately, this did not work for them. They eventually decided to break up, ",". Just ", " years after getting married, they got divorced. The boy's parents felt ", " about this; however, the girl’s parents felt "];
+var count = 0;
+
+function prompts()
+{
+	document.getElementById("story").style.visibility = "hidden";
+	document.getElementById("userEnter").style.visibility = "visible";
+	document.getElementById("response").value = partsOfSpeech[count];
+	document.getElementById("response").style.width="800px";
+
+}
+
+
+function getWords()
+{
+	
+	var wordBox = document.getElementById("response");
+	userAnswers[count] = wordBox.value;
+	count++;
+	
+	if( count < partsOfSpeech.length)
+	{
+	prompts();
+	}
+	else
+	{
+	count = [0]
+	document.getElementById("story").innerHTML = displayStory();
+	}
+
+}
+
+function displayStory()
+{
+	alert("story is done");
+	var answer = "";
+	var i;
+
+	for (i = 0; i < userAnswers.length; i++)
+	{ 
+	answer = answer + story[i];
+	answer = answer + userAnswers[i];
+	}
+	if (i == userAnswers.length)
+	{answer = answer + ".";}
+	
+	document.getElementById("story").style.visibility = "visible";
+	document.getElementById("userEnter").style.visibility = "hidden";
+	
+	return answer;
+}
+
+</script>
+</head>
+<body>
+<center> 
+<h1>My MadLib!</h1>
+<input id="DaButton" type="button" value="start" onClick="prompts()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+<input type = "text" id="response" value="" style="length:400" onfocusout="getWords()"/>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</div>
+</br>
+</br>
+</br>
+<center>
+<a href="index.html"> Click here to go home. </a> 
+</center>
+</body>
+</html>
