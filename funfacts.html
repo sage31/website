@@ -45,7 +45,13 @@ function start()
  var daIndex = getIndex(selection.value);
  var funFactBox = document.getElementById("funFact");
  
- funFactBox.value = facts[daIndex];
+
+ 
+ if (daIndex <= -1)
+ { alert("An unknown error has occurred. Please try again."); }
+ else 
+ { funFactBox.value = facts[daIndex]; } 
+ 
  
 
 }
