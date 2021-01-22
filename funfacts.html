@@ -1,0 +1,98 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+
+1. Page will first run the loadData function, which will immediately load the text into the "select"
+2. Next the user will select, or not select, an item from the drop down list other than the first option, and will then hit the click button
+3. After that, the start function runs, which is relatively simple: its only job is to set the value of the "text" or "fact" column to the fact which corresponds 
+with the element selected from "group"
+4. In order to find out which option was selected from "group," we will use the "getIndex" function
+5. After the getIndex function finds which element was selected in group, we will pass that number of the element back to start() using return, 
+and it would return in a line which would look something like this: document.getElementById("funFact").value = facts[getIndex;];
+
+*/
+
+
+var group = ["-- Choose a Brawlhalla legend --", "Nix", "Orion", "Mordex", "Artemis", "Fait", "Hattori", "Jiro", "Mako"];
+
+var facts = ["-- No legend selected --", "Nix's signature attacking moves on the scythe weapon are the fastest scythe signatures in the game.", "Orion is the most popular rocket-lance-wielding legend in the game.", "Mordex is the most played legend of all time in the game.", "In the lore of Brawlhalla, Artemis and Orion were actually friends long before the game.", "Fait is known as Fait because her lore states that she was once a witch who could deduce a person's fate.", "Hattori is the fastest sword legend in the game.", "Jiro has never been used in a pro tournament... he is also one of the most hated legends in the game.", "Mako is the newest legend in the game, and also currently the overall most popular legend."];
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("prez");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+
+/*var daText = document.getElementById("funFact")
+  daText.value = facts[getIndex;] */
+function start()
+{
+
+ 
+ var selection = document.getElementById("prez");
+ var daIndex = getIndex(selection.value);
+ var funFactBox = document.getElementById("funFact");
+ 
+ funFactBox.value = facts[daIndex];
+ 
+
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d)
+{
+	var answer = -1; // invalid index value
+	
+	for (var i = 0; i < group.length; i++)
+	{ 
+	
+	
+	if (group[i] == d)
+	{ answer = i; }
+	
+	
+	} 
+	
+
+	return answer;
+
+}
+
+
+
+</script>
+</head>
+<body onload="loadData()" style="font-family:Tahoma;" bgcolor="#808B96"> 
+<center>
+<h1> Brawlhalla Legend Fun Facts</h1>
+
+<h3> (Brawlhalla is a game, I am going to be giving fun facts for some of the characters/legends.) </h3>
+<a href="index.html"> Click here to return to my home page. </a>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="prez"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
