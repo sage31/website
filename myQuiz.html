@@ -31,6 +31,8 @@ function displayQuestion()
 {
 
 document.getElementById("question").value = questions[index];
+document.getElementById("answer").value = "";
+
 
 
 }
@@ -51,6 +53,13 @@ function updateScore()
 	}
 	else
 	{ alert("Wrong!"); }
+	
+if (index == questions.length)
+{
+alert("Your score was " + score + ". Press next question to play again");
+index = 0;
+score = 0;
+}
 
 }
 
@@ -61,8 +70,12 @@ function checkAnswer(ans)
 var userAnswer = document.getElementById("answer").value;
 if (userAnswer == answers[index])
 { ans = true; }
-index += 1;
-return ans;
+if (userAnswer != "")
+{index += 1; return ans;}
+else
+{ alert("Please answer the question."); }
+
+ 
 
 }
 
@@ -77,7 +90,7 @@ return ans;
 
 </br>
 
-Press "next question" to start quiz.
+Press "next question" to start quiz. Make sure to capitalize each answer.
 
 <br/><br/>
 <table border = 3>
@@ -92,7 +105,7 @@ Press "next question" to start quiz.
 </table>
 <br/><br/>
 <input type="button" value="Next Question" onclick="displayQuestion()"/>
-Score: 
+Score: (not working yet) 
 <input id="scores" type="text" size ="1" readonly = true/>
 </center>
 
