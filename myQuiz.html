@@ -1,0 +1,101 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+
+1. Program all variables, testing to make sure the website **still** works after all of them are defined
+2. Create functions, displayQuestion will be first, then update score, and then checkanswer
+3. displayQuestion will loop every time the button is clicked, and it's job is to change the question
+4. The user will submit their answer in a text box, and their answer will be stored in a new array. Once they focus out, the update score function will run
+5. The update score function will utilize the checkAnswer function, in order to check if the answer is right or not. 
+6. Once the true or false is returned into updatescore, the score will be updated and the cycle continues.
+
+*/
+
+
+var questions = [ "What is 10*8-2?", "Who was the first president of the United States of America?", "Who teaches band at Carmel High School (full name) ?", "What muscles do bicep curls work?", 
+"When was the first iPhone released?", "What company owns YouTube?", "What does AP stand for in context of AP Computer Science?", "What is the molar mass of water? Round to 2 decimal places, no units.", 
+"Which number question is this, assuming that the first question was 10*8-2 ?", "What is Mr. Clifford's last name?" ]; // Create an array of 10ish questions.
+
+var answers = ["78", "George Washington", "Brian Handley", "Biceps", "2007", "Google", "Advanced Placement", "18.02", "9", "Clifford"];    // Create an array of the cooresponding answers to the questions above.
+
+var index = 0;
+
+var score = 0;
+
+// Create code in displayQuestion that will display the contents of the questions array, one 
+// element at a time. After the last element is displayed, the program should display the first
+// element again.
+function displayQuestion()
+{
+
+document.getElementById("question").value = questions[index];
+
+
+}
+
+/*
+This function will first acquire the user's answer (from the textbox with the ID "answer". Then this function will pass that to the checkAnswer function (note: that there is a parameter.) 
+The checkAnswer will return a true or a false. If that function returns true, then the score variable will increase by 1, and an alert should pop up saying "Correct" or something positive. 
+If the checkAnswer function comes back false, then score doesn't increase but an alert should announce "incorect." or something similar. 
+*/
+function updateScore()
+{
+
+	var booleans = checkAnswer(false);
+	if(booleans == true)
+	{
+	alert("Correct!");
+	score += 2;
+	}
+	else
+	{ alert("Wrong!"); }
+
+}
+
+// This function takes a parameter which will be the users answer. If what the user has submitted the correct answer, this method should return true. Otherwise it should return false. 
+function checkAnswer(ans)
+{
+
+var userAnswer = document.getElementById("answer").value;
+if (userAnswer == answers[index])
+{ ans = true; }
+index += 1;
+return ans;
+
+}
+
+
+
+</script>
+</head>
+<body > 
+<center>
+<h1>My Quiz</h1>
+<a href="index.html"> Click here to return to my home page. </a>
+
+</br>
+
+Press "next question" to start quiz.
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="updateScore()"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Next Question" onclick="displayQuestion()"/>
+Score: 
+<input id="scores" type="text" size ="1" readonly = true/>
+</center>
+
+
+</body>
+</html>
