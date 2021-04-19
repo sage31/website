@@ -1,0 +1,214 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+
+var userExercises = new Array(0);
+var userTimers = new Array(0);
+var done = false; 
+var grCounter = 3;
+
+function startPT()
+{
+document.getElementById("header").style.visibility = "hidden"
+document.getElementById("starterbutton").style.visibility = "hidden"
+document.getElementById("clicktoadd").style.visibility = "visible"
+document.getElementById("exercisetable").style.visibility = "visible"
+document.getElementById("startworkoutbutton").style.visibility = "visible"
+document.getElementById("header2").style.visibility = "visible" 
+
+
+
+}
+
+function addnew()
+{
+var exercise = prompt("What exercise would you like to add?");
+var time = prompt("For how long do you want to do that exercise, in seconds?")
+var time = makeSureSecondsAreChillin(time)
+
+
+userExercises.push(exercise);
+userTimers.push(time);
+
+var tablex = document.getElementById("exercisetable");
+var newRow = tablex.insertRow(userExercises.length);
+
+var newcell1 = newRow.insertCell(0);
+var newcell2 = newRow.insertCell(1);
+
+newcell1.innerHTML = exercise;
+newcell2.innerHTML = time;
+
+
+
+}
+
+function makeSureSecondsAreChillin(t)
+{
+	if (isNaN(t) == true)
+	{
+
+	alert("You have entered an invalid time value for the exercise. Please use only numbers and try again.");
+	var test2 = prompt("For how long do you want to do that exercise, in seconds?");
+
+		if(isNaN(test2) == true)
+		{
+		return makeSureSecondsAreChillin(test2);
+		}
+		else
+		{
+		return test2;
+		}
+
+	}		
+
+	else
+	{return t;}
+
+}
+
+
+function startWorkout()
+{
+var confirm1 = confirm("Are you sure you would you like to start the workout?");
+
+	if(confirm1 == true)
+	{
+
+	document.getElementById("clicktoadd").style.visibility = "hidden"
+	document.getElementById("exercisetable").style.visibility = "hidden"
+	document.getElementById("startworkoutbutton").style.visibility = "hidden"
+	document.getElementById("header2").style.visibility = "hidden" 
+	
+	document.getElementById("getStarted").style.display = "block"
+	var grTime = setTimeout(getReady, 1000, grCounter);
+
+
+	
+
+
+
+	}
+}
+
+function getReady(g)
+{
+g--;
+document.getElementById("gsTimer").innerHTML = g;
+
+
+if(g > 0)	
+	{
+	var gxtime = setTimeout(getReady, 1000, g)
+	}
+if(g == 0)
+	{
+	
+	document.getElementById("daTimer").style.display = "block"
+	document.getElementById("getStarted").style.display = "none"
+	countDown(0);}
+}
+
+
+function countDown(timerIndex)
+{
+	if( userTimers[timerIndex] > -1)
+	{
+	document.getElementById("exerciseDisplay").value = userExercises[timerIndex];
+
+		if(userTimers[timerIndex] < 10)
+			{
+			document.getElementById("timerDisplay").value = "00:0" + userTimers[timerIndex];
+			userTimers[timerIndex] = userTimers[timerIndex]-1;
+			}
+		else
+			{
+			document.getElementById("timerDisplay").value = "00:" + userTimers[timerIndex];
+			userTimers[timerIndex] = userTimers[timerIndex]-1;
+			}
+
+	var t = setTimeout(countDown, 1000, timerIndex);
+	}
+	else
+	{
+	clearTimeout(t);
+
+		if( timerIndex<userTimers.length)
+		{
+		timerIndex++;
+		countDown(timerIndex);
+		}
+	
+	
+	}
+	if (userTimers.length == timerIndex)
+	{ finished(); }
+
+	
+}
+
+
+function finished()
+{
+alert("Workout complete!");
+}
+
+
+
+
+
+
+
+</script>
+</head>
+<body> 
+<center>
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+<h1 id="header" style="visibility:visible"> JavaScript Workout Timer </h1>
+<p id="header2" style="visibility:hidden">Click start workout to do exercises in order. </p>
+
+<br/><br/>
+
+<input id="starterbutton" style="visibility:visible" type="button" value="Click to create" onclick="startPT()" />
+
+
+<div id="getStarted" style="display:none">
+<p style="font-size:50"> Get Ready! </p>
+<h1 id="gsTimer"> 3 </h1> 
+</div> 
+<div id="daTimer" style="display:none">
+<P> Exercise: </p>
+<input id="exerciseDisplay" type="text" value=""/>
+ <p>Time Remaining:</p>
+
+<input id="timerDisplay" type="text" value="00:00"/>
+</div>
+
+<table id="exercisetable" style="visibility:hidden">
+<thead>
+  <tr>
+    <th>Your Exercises /</th>
+    <th>/  Time (in seconds)</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<br/><br/><br/><br/>
+
+
+<input id="clicktoadd" style="visibility:hidden" type="button" value="Click to add an exercise" onclick="addnew()" />
+<input id="startworkoutbutton" style="visibility:hidden" type="button" value="Start workout" onclick="startWorkout()" />
+
+
+
+</center>
+
+
+</body>
+</html>
